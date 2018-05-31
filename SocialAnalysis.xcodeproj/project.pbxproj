@@ -68,6 +68,8 @@
 		84D899DB1FE437C200E96DA8 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D899DA1FE437C200E96DA8 /* BaseResponse.swift */; };
 		84D899DD1FE4380000E96DA8 /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D899DC1FE4380000E96DA8 /* RequestProtocol.swift */; };
 		84D899E01FE43ABF00E96DA8 /* InstagramBussiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D899DF1FE43ABF00E96DA8 /* InstagramBussiness.swift */; };
+		90275A2520BFD6BE00CF9150 /* TouchIDAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90275A2420BFD6BE00CF9150 /* TouchIDAuthentication.swift */; };
+		90275A2720BFDEE400CF9150 /* PasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90275A2620BFDEE400CF9150 /* PasscodeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -151,6 +153,8 @@
 		84D899DA1FE437C200E96DA8 /* BaseResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
 		84D899DC1FE4380000E96DA8 /* RequestProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
 		84D899DF1FE43ABF00E96DA8 /* InstagramBussiness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramBussiness.swift; sourceTree = "<group>"; };
+		90275A2420BFD6BE00CF9150 /* TouchIDAuthentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchIDAuthentication.swift; sourceTree = "<group>"; };
+		90275A2620BFDEE400CF9150 /* PasscodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeViewController.swift; sourceTree = "<group>"; };
 		B0FEEAABDFF9972F1A90B9CF /* Pods_SocialAnalysis.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocialAnalysis.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -187,6 +191,7 @@
 		8424CD1B1FDBAFD60098E3A4 /* SocialAnalysis */ = {
 			isa = PBXGroup;
 			children = (
+				90275A2420BFD6BE00CF9150 /* TouchIDAuthentication.swift */,
 				8424CD651FDBD7A60098E3A4 /* Modal */,
 				8424CD331FDBB22D0098E3A4 /* Extension */,
 				8424CD361FDBB22D0098E3A4 /* GlobaDefine */,
@@ -198,6 +203,7 @@
 				8424CD231FDBAFD60098E3A4 /* Assets.xcassets */,
 				8424CD251FDBAFD60098E3A4 /* LaunchScreen.storyboard */,
 				8424CD281FDBAFD60098E3A4 /* Info.plist */,
+				90275A2620BFDEE400CF9150 /* PasscodeViewController.swift */,
 			);
 			path = SocialAnalysis;
 			sourceTree = "<group>";
@@ -650,6 +656,7 @@
 				84D899DB1FE437C200E96DA8 /* BaseResponse.swift in Sources */,
 				843EF3701FE18FCC00CDD4A8 /* InstagramKitConstants.m in Sources */,
 				84CCA8D51FDEF6DC00A74ED0 /* AppManagetDetailsVC.swift in Sources */,
+				90275A2720BFDEE400CF9150 /* PasscodeViewController.swift in Sources */,
 				843EF3781FE18FCC00CDD4A8 /* InstagramComment.m in Sources */,
 				8424CD4D1FDBB22D0098E3A4 /* AZSoundItem.m in Sources */,
 				84CCA8E01FDF000C00A74ED0 /* SettingConfigCell.swift in Sources */,
@@ -658,6 +665,7 @@
 				8424CD4E1FDBB22D0098E3A4 /* AZSoundManager.m in Sources */,
 				84D899DD1FE4380000E96DA8 /* RequestProtocol.swift in Sources */,
 				843EF3771FE18FCC00CDD4A8 /* InstagramPaginationInfo.m in Sources */,
+				90275A2520BFD6BE00CF9150 /* TouchIDAuthentication.swift in Sources */,
 				843EF3791FE18FCC00CDD4A8 /* InstagramEngine.m in Sources */,
 				84CCA8D21FDEDCCA00A74ED0 /* AppManagerObject.swift in Sources */,
 				84AF24C21FE2C98D00257B2F /* InstagramLoginVC.swift in Sources */,
