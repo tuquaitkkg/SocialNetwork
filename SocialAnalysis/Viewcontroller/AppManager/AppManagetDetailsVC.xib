@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AppManagetDetailsVC" customModule="SocialAnalysis" customModuleProvider="target">
+            <connections>
+                <outlet property="indicator" destination="L6v-RR-12x" id="6DJ-yy-bu3"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="webContent" destination="jgs-jS-4aK" id="FYo-nS-mCQ"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jgs-jS-4aK">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </webView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="L6v-RR-12x">
+                    <rect key="frame" x="150" y="274" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="CCH-QA-8V9"/>
+                        <constraint firstAttribute="height" constant="20" id="cZh-Wn-TEu"/>
+                    </constraints>
+                </activityIndicatorView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="L6v-RR-12x" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="254" id="1uC-Id-ILo"/>
+                <constraint firstItem="L6v-RR-12x" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="150" id="O1G-we-evm"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="L6v-RR-12x" secondAttribute="trailing" constant="150" id="TWY-dR-zC9"/>
+                <constraint firstItem="jgs-jS-4aK" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="V5G-LC-vck"/>
+                <constraint firstItem="jgs-jS-4aK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="eRh-4c-c8V"/>
+                <constraint firstItem="jgs-jS-4aK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="k2F-TW-5bd"/>
+                <constraint firstItem="jgs-jS-4aK" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="vUc-bK-y1q"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="32" y="94"/>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UserCell" id="gTV-IL-0wX" customClass="UserCell" customModule="SocialAnalysis" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="ePv-Bq-jun">
+                        <rect key="frame" x="7" y="15" width="110" height="110"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D5a-Xe-GvW">
+                        <rect key="frame" x="0.0" y="101" width="125" height="23"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="23" id="Rzn-lj-hBh"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="D5a-Xe-GvW" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="4yn-pF-0Q4"/>
+                <constraint firstAttribute="trailing" secondItem="D5a-Xe-GvW" secondAttribute="trailing" id="9qm-Bz-ris"/>
+                <constraint firstItem="ePv-Bq-jun" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="15" id="Ezx-PW-qod"/>
+                <constraint firstItem="ePv-Bq-jun" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="7" id="J22-gg-LYg"/>
+                <constraint firstAttribute="trailing" secondItem="ePv-Bq-jun" secondAttribute="trailing" constant="8" id="ewk-t7-AWQ"/>
+                <constraint firstAttribute="bottom" secondItem="ePv-Bq-jun" secondAttribute="bottom" id="irO-bB-nrk"/>
+                <constraint firstAttribute="bottom" secondItem="D5a-Xe-GvW" secondAttribute="bottom" constant="1" id="psz-0X-55S"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="123" height="125"/>
+            <connections>
+                <outlet property="imgAvatar" destination="ePv-Bq-jun" id="VYv-ho-pSd"/>
+                <outlet property="lbName" destination="D5a-Xe-GvW" id="QTT-kT-yio"/>
+            </connections>
+            <point key="canvasLocation" x="-152.5" y="71.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="avatar" width="400" height="400"/>
+    </resources>
+</document>
