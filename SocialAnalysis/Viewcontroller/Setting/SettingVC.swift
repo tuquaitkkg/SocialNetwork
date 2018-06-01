@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingVC: BaseVC {
+class SettingVC: BaseVC,SettingConfigCellDelegate {
     fileprivate var arrSettingData = [SettingObject]()
     
     @IBOutlet weak var tbvContent: UITableView!
@@ -16,6 +16,11 @@ class SettingVC: BaseVC {
         super.viewDidLoad()
         self.initData() 
         self.initLayout()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tbvContent.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,6 +70,7 @@ extension SettingVC:UITableViewDelegate,UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: SettingConfigCell.getIdentifier(), for: indexPath) as! SettingConfigCell
             cell.configCell(object: self.arrSettingData[indexPath.row])
             cell.selectionStyle = .none
+            cell.delegate = self
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: SettingCell.getIdentifier(), for: indexPath) as! SettingCell
@@ -104,5 +110,12 @@ extension SettingVC:UITableViewDelegate,UITableViewDataSource{
         }
         
         tbvContent.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func goToPasscode() {
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let passcodeVC = storyboard.instantiateViewController(withIdentifier: "PasscodeViewController") as! PasscodeViewController
+        passcodeVC.typeView = 1;
+        present(passcodeVC, animated: true, completion: nil)
     }
 }

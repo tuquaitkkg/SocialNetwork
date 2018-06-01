@@ -17,13 +17,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.main.bounds)
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let passcodeVC = storyboard.instantiateViewController(withIdentifier: "PasscodeViewController") as? PasscodeViewController
         let mainVC = MainVC(nibName: nil, bundle: nil)
-        self.window?.rootViewController = mainVC
+        if UserDefaults.standard.bool(forKey: "isPasscode") {
+            passcodeVC?.typeView = 0;
+            self.window?.rootViewController = passcodeVC
+        } else {
+            self.window?.rootViewController = mainVC
+        }
         self.window?.makeKeyAndVisible()
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         TWTRTwitter.sharedInstance().start(withConsumerKey:"c9TcEZR0HYrw4TmqURJusggte", consumerSecret:"NueXXy9Xm22o0uybOhwXGuxKgIOYOHtnQejQbuxTdrN2KIJbjn")
         return true
+    }
+    
+    func setupMainView() {
+       let mainVC = MainVC(nibName: nil, bundle: nil)
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = mainVC
+        window?.makeKeyAndVisible()
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

@@ -8,10 +8,15 @@
 
 import UIKit
 
+protocol SettingConfigCellDelegate:class {
+    func goToPasscode()
+}
+
 class SettingConfigCell: UITableViewCell {
 
     @IBOutlet weak var swValue: UISwitch!
     @IBOutlet weak var lbTitle: UILabel!
+    weak var delegate: SettingConfigCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         swValue.onTintColor = COLOR.APP_COLOR
@@ -24,11 +29,12 @@ class SettingConfigCell: UITableViewCell {
     
     func configCell(object:SettingObject) -> Void {
         self.lbTitle.text = object.name
-        self.swValue.isOn = object.value!
+        self.swValue.isOn = UserDefaults.standard.bool(forKey: "isPasscode")
     }
     
     @IBAction func swChange(_ sender: Any) {
 //        DataLocal.sharedInstance.setShowSnow(isShow: !swValue.isOn)
 //        XAppDelegate.addSnow(isShow: !swValue.isOn)
+        delegate?.goToPasscode()
     }
 }

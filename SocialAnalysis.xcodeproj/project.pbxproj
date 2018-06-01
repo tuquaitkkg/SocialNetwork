@@ -70,6 +70,9 @@
 		84D899E01FE43ABF00E96DA8 /* InstagramBussiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D899DF1FE43ABF00E96DA8 /* InstagramBussiness.swift */; };
 		90275A2520BFD6BE00CF9150 /* TouchIDAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90275A2420BFD6BE00CF9150 /* TouchIDAuthentication.swift */; };
 		90275A2720BFDEE400CF9150 /* PasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90275A2620BFDEE400CF9150 /* PasscodeViewController.swift */; };
+		9086ECB720C1010300063216 /* passcode_bg.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 9086ECB420C1010300063216 /* passcode_bg.PNG */; };
+		9086ECB820C1010300063216 /* passcode2.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 9086ECB520C1010300063216 /* passcode2.PNG */; };
+		9086ECB920C1010300063216 /* passcode1.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 9086ECB620C1010300063216 /* passcode1.PNG */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -155,6 +158,9 @@
 		84D899DF1FE43ABF00E96DA8 /* InstagramBussiness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramBussiness.swift; sourceTree = "<group>"; };
 		90275A2420BFD6BE00CF9150 /* TouchIDAuthentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchIDAuthentication.swift; sourceTree = "<group>"; };
 		90275A2620BFDEE400CF9150 /* PasscodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeViewController.swift; sourceTree = "<group>"; };
+		9086ECB420C1010300063216 /* passcode_bg.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = passcode_bg.PNG; sourceTree = "<group>"; };
+		9086ECB520C1010300063216 /* passcode2.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = passcode2.PNG; sourceTree = "<group>"; };
+		9086ECB620C1010300063216 /* passcode1.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = passcode1.PNG; sourceTree = "<group>"; };
 		B0FEEAABDFF9972F1A90B9CF /* Pods_SocialAnalysis.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocialAnalysis.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -223,6 +229,9 @@
 		8424CD311FDBB22D0098E3A4 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				9086ECB420C1010300063216 /* passcode_bg.PNG */,
+				9086ECB620C1010300063216 /* passcode1.PNG */,
+				9086ECB520C1010300063216 /* passcode2.PNG */,
 				8424CD321FDBB22D0098E3A4 /* snow.gif */,
 			);
 			path = Resource;
@@ -502,7 +511,7 @@
 				TargetAttributes = {
 					8424CD181FDBAFD60098E3A4 = {
 						CreatedOnToolsVersion = 9.1;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -536,15 +545,18 @@
 				8424CD241FDBAFD60098E3A4 /* Assets.xcassets in Resources */,
 				8424CD5C1FDBB3C80098E3A4 /* AppManagerVC.xib in Resources */,
 				8424CD581FDBB3B90098E3A4 /* AccountsVC.xib in Resources */,
+				9086ECB920C1010300063216 /* passcode1.PNG in Resources */,
 				8424CD6B1FDBE83F0098E3A4 /* AccountDetailsVC.xib in Resources */,
 				8424CD221FDBAFD60098E3A4 /* Main.storyboard in Resources */,
 				84CCA8D01FDEDBB600A74ED0 /* AppManagerCell.xib in Resources */,
+				9086ECB720C1010300063216 /* passcode_bg.PNG in Resources */,
 				84CCA8E41FDF000C00A74ED0 /* SettingConfigCell.xib in Resources */,
 				84AF24C31FE2C98D00257B2F /* InstagramLoginVC.xib in Resources */,
 				84CCA8DF1FDF000C00A74ED0 /* SettingContentVC.xib in Resources */,
 				8424CD641FDBD0C20098E3A4 /* AccountCell.xib in Resources */,
 				8424CD601FDBB3D20098E3A4 /* SettingVC.xib in Resources */,
 				8424CD701FDBE9260098E3A4 /* DetailsCell.xib in Resources */,
+				9086ECB820C1010300063216 /* passcode2.PNG in Resources */,
 				8424CD461FDBB22D0098E3A4 /* snow.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -816,11 +828,14 @@
 			baseConfigurationReference = 19013EC9E373D0B79CE30FD4 /* Pods-SocialAnalysis.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = BJ8TRNNR28;
 				INFOPLIST_FILE = SocialAnalysis/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.app.SocialAnalysis;
+				PRODUCT_BUNDLE_IDENTIFIER = aero.crewconnect.crewconnect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6715dd8e-d560-46be-a869-ac5eac0b8bbc";
+				PROVISIONING_PROFILE_SPECIFIER = "crewCONNECT Dev";
 				SWIFT_OBJC_BRIDGING_HEADER = "SocialAnalysis/GlobaDefine/Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -832,11 +847,14 @@
 			baseConfigurationReference = 651EA81869DEBC5975D37C87 /* Pods-SocialAnalysis.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = BJ8TRNNR28;
 				INFOPLIST_FILE = SocialAnalysis/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.app.SocialAnalysis;
+				PRODUCT_BUNDLE_IDENTIFIER = aero.crewconnect.crewconnect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6715dd8e-d560-46be-a869-ac5eac0b8bbc";
+				PROVISIONING_PROFILE_SPECIFIER = "crewCONNECT Dev";
 				SWIFT_OBJC_BRIDGING_HEADER = "SocialAnalysis/GlobaDefine/Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
