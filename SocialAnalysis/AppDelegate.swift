@@ -19,12 +19,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         let passcodeVC = storyboard.instantiateViewController(withIdentifier: "PasscodeViewController") as? PasscodeViewController
-        let mainVC = MainVC(nibName: nil, bundle: nil)
+        let mainVC = AppManagerVC(nibName: "AppManagerVC", bundle: nil)
+        let navigationController = UINavigationController(rootViewController: mainVC)
+        navigationController.navigationBar.isTranslucent = false
+        navigationController.navigationBar.tintColor = UIColor.white
         if UserDefaults.standard.bool(forKey: "isPasscode") {
             passcodeVC?.typeView = 0;
             self.window?.rootViewController = passcodeVC
         } else {
-            self.window?.rootViewController = mainVC
+            self.window?.rootViewController = navigationController
         }
         self.window?.makeKeyAndVisible()
         
@@ -34,9 +37,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func setupMainView() {
-       let mainVC = MainVC(nibName: nil, bundle: nil)
+        let mainVC = AppManagerVC(nibName: "AppManagerVC", bundle: nil)
+        let navigationController = UINavigationController(rootViewController: mainVC)
+        navigationController.navigationBar.isTranslucent = false
+        navigationController.navigationBar.tintColor = UIColor.white
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = mainVC
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
 

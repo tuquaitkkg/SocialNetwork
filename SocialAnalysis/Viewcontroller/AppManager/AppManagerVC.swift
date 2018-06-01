@@ -8,9 +8,11 @@
 
 import UIKit
 
-class AppManagerVC: BaseVC {
+class AppManagerVC: BaseVC,AppManagerCellDelegate {
     fileprivate var listDataApp = [AppManagerObject]()
+    fileprivate var listDataFavorite = [AppManagerObject]()
     @IBOutlet weak var tbvContent: UITableView!
+    var segment: UISegmentedControl! = nil
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initLayout()
@@ -23,9 +25,33 @@ class AppManagerVC: BaseVC {
     
     //MARK: Init
     func initLayout() -> Void {
+        segment = UISegmentedControl(items: ["Appkeys", "Favorites"])
+        segment.sizeToFit()
+        segment.setWidth(100, forSegmentAt: 0)
+        segment.setWidth(100, forSegmentAt: 1)
+        segment.tintColor = UIColor.white
+        segment.selectedSegmentIndex = 0;
+        segment.setTitleTextAttributes([kCTFontAttributeName: UIFont.systemFont(ofSize: 16)],
+                                       for: UIControlState.normal)
+        segment.addTarget(self, action: #selector(mapTypeChanged), for: .valueChanged)
+        self.navigationItem.titleView = segment
+        
+        
         self.setupTitleNavi(title: "App Manager")
         self.tbvContent.register(UINib(nibName: AppManagerCell.getIdentifier(), bundle: nil), forCellReuseIdentifier: AppManagerCell.getIdentifier())
         self.tbvContent.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        
+        let leftBarButton = UIBarButtonItem.init(image: UIImage.init(named: "ic_UnSetting")!, style: .done, target: self, action: #selector(goToSetting))
+        self.navigationItem.leftBarButtonItem = leftBarButton
+    }
+    
+    @IBAction func mapTypeChanged(segControl: UISegmentedControl) {
+        self.tbvContent.reloadData()
+    }
+    
+    @IBAction func goToSetting() {
+        let settingVC = SettingVC(nibName: "SettingVC", bundle: nil)
+        self.navigationController?.pushViewController(settingVC, animated: true)
     }
     
     func initData() -> Void {
@@ -67,25 +93,74 @@ class AppManagerVC: BaseVC {
         
         let googledriver = AppManagerObject(name: "Google Driver", icon: "ic_GoogleDrive", color: "d6d6d6", url: "https://www.google.com/drive/")
         self.listDataApp.append(googledriver)
+        
+        let userDefaults = UserDefaults.standard
+        let decoded  = userDefaults.object(forKey: "favorite") as! Data
+        let decodedTeams = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! Favorites
+        listDataFavorite = decodedTeams.array
+        print("")
     }
 }
 extension AppManagerVC:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.listDataApp.count
+        if segment.selectedSegmentIndex == 0 {
+            return self.listDataApp.count
+        } else {
+            return self.listDataFavorite.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: AppManagerCell.getIdentifier(), for: indexPath) as! AppManagerCell
-        cell.accessoryType = .disclosureIndicator
-        cell.configCell(object: self.listDataApp[indexPath.row])
+        cell.delegate = self
+        cell.indexPath = indexPath
+        if segment.selectedSegmentIndex == 0 {
+            let object : AppManagerObject = self.listDataApp[indexPath.row]
+            let filtered_list = listDataFavorite.filter({$0.name == object.name})
+            if filtered_list.count > 0 {
+                cell.btnFavorite.isSelected = true
+            } else {
+                cell.btnFavorite.isSelected = false
+            }
+            cell.configCell(object: object)
+        } else {
+            cell.btnFavorite.isSelected = true
+            cell.configCell(object: self.listDataFavorite[indexPath.row])
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let controller = AppManagetDetailsVC(nibName: "AppManagetDetailsVC", bundle: nil)
-        controller.accManager = self.listDataApp[indexPath.row]
+        if segment.selectedSegmentIndex == 0 {
+            controller.accManager = self.listDataApp[indexPath.row]
+        } else {
+            controller.accManager = self.listDataFavorite[indexPath.row]
+        }
         self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func clickFavorite(indexPath : IndexPath!, button : UIButton!) {
+        button.isSelected = !button.isSelected
+        if button.isSelected {
+            listDataFavorite.append(self.listDataApp[indexPath.row])
+        } else {
+            var object : AppManagerObject!
+            if segment.selectedSegmentIndex == 0 {
+                object = self.listDataApp[indexPath.row]
+            } else {
+                object = self.listDataFavorite[indexPath.row]
+            }
+            
+            let filtered_list = listDataFavorite.filter({$0.name == object.name})
+            let index : Int = listDataFavorite.index(of: filtered_list.first!)!
+            
+            listDataFavorite.remove(at: index)
+        }
+        let array : Favorites = Favorites(array: self.listDataFavorite)
+        array.save()
+        tbvContent.reloadData()
     }
     
 }

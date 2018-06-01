@@ -8,10 +8,17 @@
 
 import UIKit
 
+protocol AppManagerCellDelegate:class {
+    func clickFavorite(indexPath : IndexPath!, button : UIButton!)
+}
+
 class AppManagerCell: UITableViewCell {
 
+    weak var delegate: AppManagerCellDelegate?
+    @IBOutlet weak var btnFavorite: UIButton!
     @IBOutlet weak var lbName: UILabel!
     @IBOutlet weak var imgSocial: UIImageView!
+    var indexPath : IndexPath!
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -24,6 +31,10 @@ class AppManagerCell: UITableViewCell {
         self.lbName.text = object.name
         self.backgroundColor = UIColor(hexString: object.color)
         self.imgSocial.image = UIImage.init(named: object.icon)
+    }
+    @IBAction func clickFavorite(_ sender: Any) {
+        let button : UIButton = sender as! UIButton
+        delegate?.clickFavorite(indexPath: indexPath, button: button)
     }
     
 }
