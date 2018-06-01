@@ -51,12 +51,12 @@ class PasscodeViewController: UIViewController,UITextFieldDelegate {
         touchMe.authenticateUser() { [weak self] message in
             if let message = message {
                 // if the completion is not nil show an alert
-//                let alertView = UIAlertController(title: "Error",
-//                                                  message: message,
-//                                                  preferredStyle: .alert)
-//                let okAction = UIAlertAction(title: "Darn!", style: .default)
-//                alertView.addAction(okAction)
-//                self?.present(alertView, animated: true)
+                let alertView = UIAlertController(title: "Error",
+                                                  message: message,
+                                                  preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK!", style: .default)
+                alertView.addAction(okAction)
+                self?.present(alertView, animated: true)
                 
             } else {
                 if self?.typeView == 0 {

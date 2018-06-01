@@ -25,6 +25,7 @@ class AppManagerVC: BaseVC {
     func initLayout() -> Void {
         self.setupTitleNavi(title: "App Manager")
         self.tbvContent.register(UINib(nibName: AppManagerCell.getIdentifier(), bundle: nil), forCellReuseIdentifier: AppManagerCell.getIdentifier())
+        self.tbvContent.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     }
     
     func initData() -> Void {
