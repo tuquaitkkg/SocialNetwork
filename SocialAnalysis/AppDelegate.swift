@@ -19,16 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         let passcodeVC = storyboard.instantiateViewController(withIdentifier: "PasscodeViewController") as? PasscodeViewController
-        let mainVC = AppManagerVC(nibName: "AppManagerVC", bundle: nil)
-        let navigationController = UINavigationController(rootViewController: mainVC)
-        navigationController.navigationBar.isTranslucent = false
-        navigationController.navigationBar.tintColor = UIColor.white
-        if UserDefaults.standard.bool(forKey: "isPasscode") {
-            passcodeVC?.typeView = 0;
-            self.window?.rootViewController = passcodeVC
-        } else {
-            self.window?.rootViewController = navigationController
-        }
+        passcodeVC?.typeView = 0
+        self.window?.rootViewController = passcodeVC
         self.window?.makeKeyAndVisible()
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)

@@ -94,10 +94,64 @@ class AppManagerVC: BaseVC,AppManagerCellDelegate {
         let googledriver = AppManagerObject(name: "Google Driver", icon: "ic_GoogleDrive", color: "d6d6d6", url: "https://www.google.com/drive/")
         self.listDataApp.append(googledriver)
         
+        let badoo = AppManagerObject(name: "Badoo", icon: "badoon", color: "6f20e0", url: "https://badoo.com/signin")
+        self.listDataApp.append(badoo)
+        
+        let meetup = AppManagerObject(name: "Meetup", icon: "Meetup", color: "e892a1", url: "https://secure.meetup.com/login/")
+        self.listDataApp.append(meetup)
+        
+        let snapchat = AppManagerObject(name: "Snapchat", icon: "snapchat", color: "f4bc9a", url: "https://www.snapchat.com/")
+        self.listDataApp.append(snapchat)
+        
+        let flickr = AppManagerObject(name: "Flickr", icon: "flickr", color: "000000", url: "https://www.flickr.com/")
+        self.listDataApp.append(flickr)
+        
+        let whatsapp = AppManagerObject(name: "Whatsapp", icon: "Whatsapp", color: "ff1494", url: "https://www.whatsapp.com/")
+        self.listDataApp.append(whatsapp)
+        
+        let viber = AppManagerObject(name: "Viber", icon: "viber", color: "00aff0", url: "https://www.viber.com/")
+        self.listDataApp.append(viber)
+        
+        let wechat = AppManagerObject(name: "Wechat", icon: "wechat", color: "3b5999", url: "https://www.wechat.com/mobile/en/")
+        self.listDataApp.append(wechat)
+        
+        let yahoo = AppManagerObject(name: "Yahoo", icon: "Yahoo", color: "00acee", url: "https://login.yahoo.com/config/login?.src=fpctx&.intl=vn&.lang=vi-VN&.done=https%3A%2F%2Fvn.yahoo.com")
+        self.listDataApp.append(yahoo)
+        
+        let messager = AppManagerObject(name: "Messager", icon: "Messager", color: "517fa3", url: "https://www.messenger.com/")
+        self.listDataApp.append(messager)
+        
+        let line = AppManagerObject(name: "Line", icon: "Line", color: "bc0000", url: "https://line.me/en/")
+        self.listDataApp.append(line)
+        
+        let kik = AppManagerObject(name: "Kik", icon: "Kik", color: "ff1494", url: "https://www.kik.com/")
+        self.listDataApp.append(kik)
+        
+        let hangouts = AppManagerObject(name: "Hangouts", icon: "hangouts", color: "cde3fb", url: "https://hangouts.google.com/")
+        self.listDataApp.append(hangouts)
+        
+        let gmail = AppManagerObject(name: "Gmail", icon: "gmail", color: "d6d6d6", url: "https://mail.google.com/")
+        self.listDataApp.append(gmail)
+        
+        
+        let taggedn = AppManagerObject(name: "Tagged", icon: "taggedn", color: "333333", url: "https://m.tagged.com/login")
+        self.listDataApp.append(taggedn)
+        
+        let pofn = AppManagerObject(name: "Pof", icon: "pofn", color: "d6d6d6", url: "https://www.pof.com/inbox.aspx")
+        self.listDataApp.append(pofn)
+        
+        let okcn = AppManagerObject(name: "Okc", icon: "okcn", color: "2cbda5", url: "https://www.okcupid.com/login")
+        self.listDataApp.append(okcn)
+        
+        
+        
         let userDefaults = UserDefaults.standard
-        let decoded  = userDefaults.object(forKey: "favorite") as! Data
-        let decodedTeams = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! Favorites
-        listDataFavorite = decodedTeams.array
+        if (userDefaults.object(forKey: "favorite") != nil) {
+            let decoded  = userDefaults.object(forKey: "favorite") as! Data
+            let decodedTeams = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! Favorites
+            listDataFavorite = decodedTeams.array
+        }
+        
         print("")
     }
 }

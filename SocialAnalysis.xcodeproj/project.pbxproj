@@ -70,6 +70,7 @@
 		84D899E01FE43ABF00E96DA8 /* InstagramBussiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D899DF1FE43ABF00E96DA8 /* InstagramBussiness.swift */; };
 		90275A2520BFD6BE00CF9150 /* TouchIDAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90275A2420BFD6BE00CF9150 /* TouchIDAuthentication.swift */; };
 		90275A2720BFDEE400CF9150 /* PasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90275A2620BFDEE400CF9150 /* PasscodeViewController.swift */; };
+		908216E120CFA17B00611FF6 /* policy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 908216E020CFA17B00611FF6 /* policy.txt */; };
 		9086ECB720C1010300063216 /* passcode_bg.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 9086ECB420C1010300063216 /* passcode_bg.PNG */; };
 		9086ECB820C1010300063216 /* passcode2.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 9086ECB520C1010300063216 /* passcode2.PNG */; };
 		9086ECB920C1010300063216 /* passcode1.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 9086ECB620C1010300063216 /* passcode1.PNG */; };
@@ -158,6 +159,7 @@
 		84D899DF1FE43ABF00E96DA8 /* InstagramBussiness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramBussiness.swift; sourceTree = "<group>"; };
 		90275A2420BFD6BE00CF9150 /* TouchIDAuthentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchIDAuthentication.swift; sourceTree = "<group>"; };
 		90275A2620BFDEE400CF9150 /* PasscodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeViewController.swift; sourceTree = "<group>"; };
+		908216E020CFA17B00611FF6 /* policy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = policy.txt; sourceTree = "<group>"; };
 		9086ECB420C1010300063216 /* passcode_bg.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = passcode_bg.PNG; sourceTree = "<group>"; };
 		9086ECB520C1010300063216 /* passcode2.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = passcode2.PNG; sourceTree = "<group>"; };
 		9086ECB620C1010300063216 /* passcode1.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = passcode1.PNG; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				8424CD251FDBAFD60098E3A4 /* LaunchScreen.storyboard */,
 				8424CD281FDBAFD60098E3A4 /* Info.plist */,
 				90275A2620BFDEE400CF9150 /* PasscodeViewController.swift */,
+				908216E020CFA17B00611FF6 /* policy.txt */,
 			);
 			path = SocialAnalysis;
 			sourceTree = "<group>";
@@ -546,6 +549,7 @@
 				8424CD5C1FDBB3C80098E3A4 /* AppManagerVC.xib in Resources */,
 				8424CD581FDBB3B90098E3A4 /* AccountsVC.xib in Resources */,
 				9086ECB920C1010300063216 /* passcode1.PNG in Resources */,
+				908216E120CFA17B00611FF6 /* policy.txt in Resources */,
 				8424CD6B1FDBE83F0098E3A4 /* AccountDetailsVC.xib in Resources */,
 				8424CD221FDBAFD60098E3A4 /* Main.storyboard in Resources */,
 				84CCA8D01FDEDBB600A74ED0 /* AppManagerCell.xib in Resources */,

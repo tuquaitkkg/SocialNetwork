@@ -1,0 +1,24 @@
+Privacy Policy
+
+This Privacy Policy explains how information is collected, used and disclosed by we with respect to your access and use of our services through our mobile applications and website. This Privacy Policy apply to any third-party websites, services or applications that can be accessed through our services. Any information that is collected is subject to the Privacy Policy in effect at the time such information is collected. We may, however, modify and revise our Privacy Policy from time-to-time. If we make any material changes to this policy, we will notify you of such changes by posting them on our website, through our services or by sending you an email or other notification, and we will indicate when such changes will become effective. By continuing to access or use our services after those changes become effective, you are agreeing to be bound by the revised policy.
+Information You Provide
+
+We will store the contents of your messages, both sent and received, and any files (such as photos) attached to those messages so that you may access them at any time from any authenticated device.
+Information We Collect
+
+We collect certain information that your mobile device or computer send when you use our services, like a device identifier, user settings, and the operating system, as well as information about your use of our services through your device. 
+Information Collected by Others
+
+We may use analytics providers to help us understand the use of our services. These providers will collect the information sent by your mobile device or browser, and their use of that information is governed by their applicable privacy policy.
+How We Use the Information We Collect
+
+We use the information we collect to provide our services, to respond to inquiries, to personalize and improve our services and your experiences when you use our services, to monitor and analyze usage and trends of our services, to send you administrative messages regarding the operation and use of our services, and for any other purpose for which the information was collected.
+Information We Share With Others
+
+We will share information about you when you instruct us to do so, or if we notify you that the information you provide will be shared in a particular manner and you provide such information. We may share information about you in anonymous and/or aggregated form with third parties for usage analytics (to help us better understand who is using our services and how), and for industry analysis, demographic profiling, research, and other similar purposes. Your information may be accessed and used by our service providers who are working with us in connection with the operation of our services (these service providers may have access to your information but only to the extent necessary to perform services on our behalf and are obligated not to disclose that information or use it for any other purposes). We may share information about you if we are (or if we believe we are) required by law or legal process (such as a subpoena, warrant or court order), if we have to respond to a lawful request from legal authorities to disclose such information, or if we need to enforce or apply this Privacy Policy, our Terms or our other policies. We may transfer and/or provide information about our users in connection with an acquisition, sale of company assets, or other situation where user information would be transferred as one of our business assets.
+How to Access Your Information
+
+You can access and modify the information you provided us through your account. We may retain an archived copy of your information as required by law and/or for record keeping purposes. Once your account is deleted, you will no longer have access to your message history, preferences or any other information associated with your use of our services. Even after you remove information from your account or profile, copies of that information may remain viewable elsewhere, to the extent it has been shared with others, it was otherwise distributed pursuant to your privacy settings, or it was copied or stored by other users.
+Security Measures We Take To Protect Your Information
+
+We employ administrative, physical and electronic measures designed to protect your information from unauthorized access, however, despite these efforts, no security measures are perfect or impenetrable and no method of data transmission can be guaranteed against any interception or other type of misuse. In the event that your personal information is compromised as a result of a breach of security, we will promptly notify you if your personal information has been compromised, as required by applicable law.

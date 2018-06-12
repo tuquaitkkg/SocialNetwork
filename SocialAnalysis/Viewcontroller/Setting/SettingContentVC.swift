@@ -13,7 +13,7 @@ class SettingContentVC: BaseVC {
     var settingObject:SettingObject!
     
     
-    @IBOutlet weak var tvContent: UITextView!
+    @IBOutlet weak var lblContent: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initLayout()
@@ -35,7 +35,7 @@ class SettingContentVC: BaseVC {
     }
     func initData() -> Void {
         self.setupTitleNavi(title: settingObject.name)
-        self.tvContent.text = settingObject.content
+        self.lblContent.text = settingObject.content
     }
 
 }

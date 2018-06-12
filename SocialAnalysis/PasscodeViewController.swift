@@ -14,6 +14,7 @@ class PasscodeViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet var PasscodeTf: [UITextField]!
     @IBOutlet var NumberButtons: [UIButton]!
+    var strOldPasscode : String! = ""
     var strPasscode : String! = ""
     var strConfirmPasscode : String! = ""
     var checkPasscode : Bool! = false
@@ -24,17 +25,33 @@ class PasscodeViewController: UIViewController,UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.layoutIfNeeded()
         for button in NumberButtons {
             button.layer.cornerRadius = button.frame.size.width/2;
             button.layer.masksToBounds = true
             button.isExclusiveTouch = true
+            button.backgroundColor = UIColor.white
+            button.setTitleColor(UIColor.init(red: 94/255, green: 229/255, blue: 163/255, alpha: 1), for: UIControlState.normal)
+            button.titleLabel?.font =  UIFont.boldSystemFont(ofSize: 40)
         }
         for textfield in PasscodeTf {
             textfield.isUserInteractionEnabled = false
             textfield.text = ""
+            textfield.layer.borderColor = UIColor.white.cgColor
+            textfield.layer.borderWidth = 1
+            textfield.layer.masksToBounds = true
+            textfield.layer.cornerRadius = textfield.frame.size.width/2
+            textfield.backgroundColor = UIColor.clear
         }
-        btnTouchID.isHidden = typeView == 1 ? true : false
+        if UserDefaults.standard.bool(forKey: "isPasscode") == false {
+            btnTouchID.isHidden = true
+        } else {
+            btnTouchID.isHidden = typeView == 1 ? true : false
+        }
         btnCancel.isHidden = typeView == 1 ? false : true
+        if typeView == 1 {
+            self.lblTitle.text = "Enter your old Passcode"
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -59,12 +76,8 @@ class PasscodeViewController: UIViewController,UITextFieldDelegate {
                 self?.present(alertView, animated: true)
                 
             } else {
-                if self?.typeView == 0 {
-                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                    appDelegate.setupMainView()
-                } else {
-                    self?.dismiss(animated: true, completion: nil)
-                }
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.setupMainView()
                 
             }
         }
@@ -80,18 +93,28 @@ class PasscodeViewController: UIViewController,UITextFieldDelegate {
             
             setTextfield()
         } else {
-            strPasscode = String(strPasscode.dropLast())
-            setTextfieldWhenTurnOffPasscode()
+            if typeView == 0 {
+                strPasscode = String(strPasscode.dropLast())
+                setTextfieldWhenTurnOffPasscode()
+            } else {
+                if strOldPasscode.count < 6 {
+                    strOldPasscode = String(strOldPasscode.dropLast())
+                } else if strOldPasscode.count == 6 && strPasscode.count < 6 {
+                    strPasscode = String(strPasscode.dropLast())
+                } else {
+                    strConfirmPasscode = String(strConfirmPasscode.dropLast())
+                }
+                setTextfieldWhenChangePasscode()
+            }
         }
-        
     }
     
     @IBAction func clickNumber(_ sender: Any) {
+        let button = sender as! UIButton
         if UserDefaults.standard.bool(forKey: "isPasscode") == false {
             if strConfirmPasscode.count > 5 {
                 return
             }
-            let button = sender as! UIButton
             if strPasscode.count == 6 {
                 strConfirmPasscode = strConfirmPasscode + String(button.tag)
             } else {
@@ -99,12 +122,32 @@ class PasscodeViewController: UIViewController,UITextFieldDelegate {
             }
             setTextfield()
         } else {
-            if strPasscode.count > 5 {
-                return
+            if typeView == 1 {
+                if strOldPasscode.count < 6 {
+                    if strOldPasscode.count > 5 {
+                        return
+                    }
+                    strOldPasscode = strOldPasscode + String(button.tag)
+                } else if strOldPasscode.count == 6 && strPasscode.count < 6 {
+                    if strPasscode.count > 5 {
+                        return
+                    }
+                    strPasscode = strPasscode + String(button.tag)
+                } else {
+                    if strConfirmPasscode.count > 5 {
+                        return
+                    }
+                    strConfirmPasscode = strConfirmPasscode + String(button.tag)
+                }
+                setTextfieldWhenChangePasscode()
+                
+            } else {
+                if strPasscode.count > 5 {
+                    return
+                }
+                strPasscode = strPasscode + String(button.tag)
+                setTextfieldWhenTurnOffPasscode()
             }
-            let button = sender as! UIButton
-            strPasscode = strPasscode + String(button.tag)
-            setTextfieldWhenTurnOffPasscode()
         }
         
     }
@@ -114,18 +157,18 @@ class PasscodeViewController: UIViewController,UITextFieldDelegate {
             if self.checkPasscode == false {
                 for textfield in self.PasscodeTf {
                     if self.strPasscode.count > textfield.tag - 1 {
-                        textfield.text = "0"
+                        textfield.backgroundColor = UIColor.white
                     } else {
-                        textfield.text = ""
+                        textfield.backgroundColor = UIColor.clear
                     }
                 }
             }
         }) { (isComplete) in
             if isComplete == true {
                 if self.strPasscode.count == 6 {
-                    if self.checkPasscode == false {
-                        sleep(1)
-                    }
+//                    if self.checkPasscode == false {
+//                        sleep(1)
+//                    }
                     
                     self.checkPasscode = true
                     self.lblTitle.text = "Confirm Passcode"
@@ -133,25 +176,30 @@ class PasscodeViewController: UIViewController,UITextFieldDelegate {
                     UIView.animate(withDuration: 0, animations: {
                         for textfield in self.PasscodeTf {
                             if self.strConfirmPasscode.count > textfield.tag - 1 {
-                                textfield.text = "0"
+                                textfield.backgroundColor = UIColor.white
                             } else {
-                                textfield.text = ""
+                                textfield.backgroundColor = UIColor.clear
                             }
                             
                         }
                     }, completion: { (isComplete) in
                         if self.strConfirmPasscode.count == 6 {
-                            sleep(1)
+//                            sleep(1)
                             if self.strPasscode != self.strConfirmPasscode {
                                 self.strConfirmPasscode = ""
                                 for textfield in self.PasscodeTf {
-                                    textfield.text = ""
+                                   textfield.backgroundColor = UIColor.clear
                                 }
                             } else {
                                 UserDefaults.standard.set(true, forKey: "isPasscode")
                                 UserDefaults.standard.set(self.strPasscode, forKey: "strPasscode")
                                 UserDefaults.standard.synchronize()
-                                self.dismiss(animated: true, completion: nil)
+                                if self.typeView == 0 {
+                                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                                    appDelegate.setupMainView()
+                                } else {
+                                    self.dismiss(animated: true, completion: nil)
+                                }
                             }
                             
                         }
@@ -168,33 +216,30 @@ class PasscodeViewController: UIViewController,UITextFieldDelegate {
             if self.checkPasscode == false {
                 for textfield in self.PasscodeTf {
                     if self.strPasscode.count > textfield.tag - 1 {
-                        textfield.text = "0"
+                        textfield.backgroundColor = UIColor.white
                     } else {
-                        textfield.text = ""
+                        textfield.backgroundColor = UIColor.clear
                     }
                 }
             }
         }) { (isComplete) in
             if isComplete == true {
                 if self.strPasscode.count == 6 {
-                    sleep(1)
+//                    sleep(1)
+                    if (UserDefaults.standard.object(forKey: "strPasscode") == nil) {
+                        return
+                    }
                     let oldPasscode : String = UserDefaults.standard.object(forKey: "strPasscode") as! String
                     
                     if self.strPasscode != oldPasscode {
                         self.strPasscode = ""
                         for textfield in self.PasscodeTf {
-                            textfield.text = ""
+                            textfield.backgroundColor = UIColor.clear
                         }
                     } else {
-                        if self.typeView == 0 {
-                            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                            appDelegate.setupMainView()
-                        } else {
-                            UserDefaults.standard.set(false, forKey: "isPasscode")
-                            UserDefaults.standard.set(nil, forKey: "strPasscode")
-                            UserDefaults.standard.synchronize()
-                            self.dismiss(animated: true, completion: nil)
-                        }
+                        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                        appDelegate.setupMainView()
+                        
                     }
                     
                 }
@@ -202,4 +247,43 @@ class PasscodeViewController: UIViewController,UITextFieldDelegate {
             
         }
     }
+    
+    func setTextfieldWhenChangePasscode() {
+        UIView.animate(withDuration: 0, animations: {
+            if self.strOldPasscode.count < 6 {
+                for textfield in self.PasscodeTf {
+                    if self.strOldPasscode.count > textfield.tag - 1 {
+                        textfield.backgroundColor = UIColor.white
+                    } else {
+                        textfield.backgroundColor = UIColor.clear
+                    }
+                }
+            }
+        }) { (isComplete) in
+            if isComplete == true {
+                if self.strOldPasscode.count == 6 {
+//                    sleep(1)
+                    if (UserDefaults.standard.object(forKey: "strPasscode") == nil) {
+                        return
+                    }
+                    let oldPasscode : String = UserDefaults.standard.object(forKey: "strPasscode") as! String
+                    
+                    if self.strOldPasscode != oldPasscode {
+                        self.strOldPasscode = ""
+                        for textfield in self.PasscodeTf {
+                            textfield.backgroundColor = UIColor.clear
+                        }
+                    } else {
+                        if self.strPasscode.count < 6 {
+                             self.lblTitle.text = "Enter new passcode"
+                        }
+                        self.setTextfield()
+                    }
+                    
+                }
+            }
+            
+        }
+    }
+    
 }
