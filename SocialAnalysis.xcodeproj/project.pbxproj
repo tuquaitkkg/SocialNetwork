@@ -68,9 +68,10 @@
 		84D899DB1FE437C200E96DA8 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D899DA1FE437C200E96DA8 /* BaseResponse.swift */; };
 		84D899DD1FE4380000E96DA8 /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D899DC1FE4380000E96DA8 /* RequestProtocol.swift */; };
 		84D899E01FE43ABF00E96DA8 /* InstagramBussiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D899DF1FE43ABF00E96DA8 /* InstagramBussiness.swift */; };
-		90275A2520BFD6BE00CF9150 /* TouchIDAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90275A2420BFD6BE00CF9150 /* TouchIDAuthentication.swift */; };
 		90275A2720BFDEE400CF9150 /* PasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90275A2620BFDEE400CF9150 /* PasscodeViewController.swift */; };
 		908216E120CFA17B00611FF6 /* policy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 908216E020CFA17B00611FF6 /* policy.txt */; };
+		90826D7420D7B5D10023FFFF /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90826D7220D7B5D00023FFFF /* NSObjectExtension.swift */; };
+		90826D7520D7B5D10023FFFF /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90826D7320D7B5D00023FFFF /* UIAlertControllerExtension.swift */; };
 		9086ECB720C1010300063216 /* passcode_bg.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 9086ECB420C1010300063216 /* passcode_bg.PNG */; };
 		9086ECB820C1010300063216 /* passcode2.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 9086ECB520C1010300063216 /* passcode2.PNG */; };
 		9086ECB920C1010300063216 /* passcode1.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 9086ECB620C1010300063216 /* passcode1.PNG */; };
@@ -157,9 +158,10 @@
 		84D899DA1FE437C200E96DA8 /* BaseResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
 		84D899DC1FE4380000E96DA8 /* RequestProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
 		84D899DF1FE43ABF00E96DA8 /* InstagramBussiness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramBussiness.swift; sourceTree = "<group>"; };
-		90275A2420BFD6BE00CF9150 /* TouchIDAuthentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchIDAuthentication.swift; sourceTree = "<group>"; };
 		90275A2620BFDEE400CF9150 /* PasscodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeViewController.swift; sourceTree = "<group>"; };
 		908216E020CFA17B00611FF6 /* policy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = policy.txt; sourceTree = "<group>"; };
+		90826D7220D7B5D00023FFFF /* NSObjectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
+		90826D7320D7B5D00023FFFF /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
 		9086ECB420C1010300063216 /* passcode_bg.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = passcode_bg.PNG; sourceTree = "<group>"; };
 		9086ECB520C1010300063216 /* passcode2.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = passcode2.PNG; sourceTree = "<group>"; };
 		9086ECB620C1010300063216 /* passcode1.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = passcode1.PNG; sourceTree = "<group>"; };
@@ -199,7 +201,6 @@
 		8424CD1B1FDBAFD60098E3A4 /* SocialAnalysis */ = {
 			isa = PBXGroup;
 			children = (
-				90275A2420BFD6BE00CF9150 /* TouchIDAuthentication.swift */,
 				8424CD651FDBD7A60098E3A4 /* Modal */,
 				8424CD331FDBB22D0098E3A4 /* Extension */,
 				8424CD361FDBB22D0098E3A4 /* GlobaDefine */,
@@ -243,6 +244,8 @@
 		8424CD331FDBB22D0098E3A4 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				90826D7220D7B5D00023FFFF /* NSObjectExtension.swift */,
+				90826D7320D7B5D00023FFFF /* UIAlertControllerExtension.swift */,
 				8424CD341FDBB22D0098E3A4 /* PhotoSaver.swift */,
 				8424CD351FDBB22D0098E3A4 /* Extension.swift */,
 			);
@@ -598,7 +601,8 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterShareExtensionUIResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -614,6 +618,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-SocialAnalysis/Pods-SocialAnalysis-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/BiometricAuthentication/BiometricAuthentication.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/EVReflection/EVReflection.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
@@ -628,6 +633,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BiometricAuthentication.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EVReflection.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
@@ -650,6 +656,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90826D7520D7B5D10023FFFF /* UIAlertControllerExtension.swift in Sources */,
 				84D899D91FE437B300E96DA8 /* BaseRequest.swift in Sources */,
 				843EF3711FE18FCC00CDD4A8 /* UserInPhoto.m in Sources */,
 				8424CD6F1FDBE9260098E3A4 /* DetailsCell.swift in Sources */,
@@ -666,6 +673,7 @@
 				843EF3761FE18FCC00CDD4A8 /* InstagramMedia.m in Sources */,
 				843EF3721FE18FCC00CDD4A8 /* InstagramUser.m in Sources */,
 				8424CD1D1FDBAFD60098E3A4 /* AppDelegate.swift in Sources */,
+				90826D7420D7B5D10023FFFF /* NSObjectExtension.swift in Sources */,
 				8424CD471FDBB22D0098E3A4 /* PhotoSaver.swift in Sources */,
 				84D899E01FE43ABF00E96DA8 /* InstagramBussiness.swift in Sources */,
 				8424CD491FDBB22D0098E3A4 /* GlobalDefine.swift in Sources */,
@@ -681,7 +689,6 @@
 				8424CD4E1FDBB22D0098E3A4 /* AZSoundManager.m in Sources */,
 				84D899DD1FE4380000E96DA8 /* RequestProtocol.swift in Sources */,
 				843EF3771FE18FCC00CDD4A8 /* InstagramPaginationInfo.m in Sources */,
-				90275A2520BFD6BE00CF9150 /* TouchIDAuthentication.swift in Sources */,
 				843EF3791FE18FCC00CDD4A8 /* InstagramEngine.m in Sources */,
 				84CCA8D21FDEDCCA00A74ED0 /* AppManagerObject.swift in Sources */,
 				84AF24C21FE2C98D00257B2F /* InstagramLoginVC.swift in Sources */,
@@ -768,7 +775,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -819,7 +826,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -832,9 +839,15 @@
 			baseConfigurationReference = 19013EC9E373D0B79CE30FD4 /* Pods-SocialAnalysis.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = BJ8TRNNR28;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SocialAnalysis",
+				);
 				INFOPLIST_FILE = SocialAnalysis/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = aero.crewconnect.crewconnect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -851,14 +864,20 @@
 			baseConfigurationReference = 651EA81869DEBC5975D37C87 /* Pods-SocialAnalysis.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = BJ8TRNNR28;
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SocialAnalysis",
+				);
 				INFOPLIST_FILE = SocialAnalysis/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = aero.crewconnect.crewconnect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6715dd8e-d560-46be-a869-ac5eac0b8bbc";
-				PROVISIONING_PROFILE_SPECIFIER = "crewCONNECT Dev";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SocialAnalysis/GlobaDefine/Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

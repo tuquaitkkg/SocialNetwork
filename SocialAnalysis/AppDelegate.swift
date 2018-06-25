@@ -9,6 +9,7 @@
 import UIKit
 import FBSDKCoreKit
 import TwitterKit
+import GoogleMobileAds
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -25,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         TWTRTwitter.sharedInstance().start(withConsumerKey:"c9TcEZR0HYrw4TmqURJusggte", consumerSecret:"NueXXy9Xm22o0uybOhwXGuxKgIOYOHtnQejQbuxTdrN2KIJbjn")
+        
+        GADMobileAds.configure(withApplicationID: kAdmobAppID)
         return true
     }
     

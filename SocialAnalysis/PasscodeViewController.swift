@@ -7,10 +7,10 @@
 //
 
 import UIKit
+import BiometricAuthentication
 
 class PasscodeViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var lblTitle: UILabel!
-    let touchMe = BiometricIDAuth()
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet var PasscodeTf: [UITextField]!
     @IBOutlet var NumberButtons: [UIButton]!
@@ -43,11 +43,7 @@ class PasscodeViewController: UIViewController,UITextFieldDelegate {
             textfield.layer.cornerRadius = textfield.frame.size.width/2
             textfield.backgroundColor = UIColor.clear
         }
-        if UserDefaults.standard.bool(forKey: "isPasscode") == false {
-            btnTouchID.isHidden = true
-        } else {
-            btnTouchID.isHidden = typeView == 1 ? true : false
-        }
+        btnTouchID.isHidden = typeView == 1 ? true : false
         btnCancel.isHidden = typeView == 1 ? false : true
         if typeView == 1 {
             self.lblTitle.text = "Enter your old Passcode"
@@ -65,21 +61,61 @@ class PasscodeViewController: UIViewController,UITextFieldDelegate {
     }
     
     @IBAction func clickTouchId(_ sender: Any) {
-        touchMe.authenticateUser() { [weak self] message in
-            if let message = message {
-                // if the completion is not nil show an alert
-                let alertView = UIAlertController(title: "Error",
-                                                  message: message,
-                                                  preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK!", style: .default)
-                alertView.addAction(okAction)
-                self?.present(alertView, animated: true)
-                
-            } else {
-                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                appDelegate.setupMainView()
-                
+        
+        // start authentication
+        BioMetricAuthenticator.authenticateWithBioMetrics(reason: "", success: {
+            
+            // authentication successful
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.setupMainView()
+            
+        }, failure: { [weak self] (error) in
+            
+            
+            // do nothing on canceled
+            if error == .canceledByUser || error == .canceledBySystem {
+                return
             }
+                
+                // device does not support biometric (face id or touch id) authentication
+            else if error == .biometryNotAvailable {
+                self?.showErrorAlert(message: error.message())
+            }
+                
+                // show alternatives on fallback button clicked
+            else if error == .fallback {
+                
+                // here we're entering username and password
+            }
+                
+                // No biometry enrolled in this device, ask user to register fingerprint or face
+            else if error == .biometryNotEnrolled {
+                self?.showGotoSettingsAlert(message: error.message())
+            }
+                
+                // Biometry is locked out now, because there were too many failed attempts.
+                // Need to enter device passcode to unlock.
+            else if error == .biometryLockedout {
+                self?.showPasscodeAuthentication(message: error.message())
+            }
+                
+                // show error on authentication failed
+            else {
+                self?.showErrorAlert(message: error.message())
+            }
+        })
+    }
+    
+    // show passcode authentication
+    func showPasscodeAuthentication(message: String) {
+        
+        BioMetricAuthenticator.authenticateWithPasscode(reason: message, success: {
+            // passcode authentication success
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.setupMainView()
+            
+        }) { (error) in
+            print(error.message())
         }
     }
     
@@ -286,4 +322,43 @@ class PasscodeViewController: UIViewController,UITextFieldDelegate {
         }
     }
     
+}
+
+extension PasscodeViewController {
+    
+    func showAlert(title: String, message: String) {
+        
+        let okAction = AlertAction(title: OKTitle)
+        let alertController = getAlertViewController(type: .alert, with: title, message: message, actions: [okAction], showCancel: false) { (button) in
+        }
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func showLoginSucessAlert() {
+        showAlert(title: "Success", message: "Login successful")
+    }
+    
+    func showErrorAlert(message: String) {
+        showAlert(title: "Error", message: message)
+    }
+    
+    func showGotoSettingsAlert(message: String) {
+        let settingsAction = AlertAction(title: "Go to settings")
+        
+        let alertController = getAlertViewController(type: .alert, with: "Error", message: message, actions: [settingsAction], showCancel: true, actionHandler: { (buttonText) in
+            if buttonText == CancelTitle { return }
+            
+            // open settings
+            let url = URL(string: "App-Prefs:root=TOUCHID_PASSCODE")
+            if UIApplication.shared.canOpenURL(url!) {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+                } else {
+                    UIApplication.shared.openURL(url!)
+                }
+            }
+            
+        })
+        present(alertController, animated: true, completion: nil)
+    }
 }

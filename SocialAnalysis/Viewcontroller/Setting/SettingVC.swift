@@ -8,10 +8,11 @@
 
 import UIKit
 import MessageUI
+import GoogleMobileAds
 
 class SettingVC: BaseVC,MFMailComposeViewControllerDelegate {
     fileprivate var arrSettingData = [SettingObject]()
-    
+    var bannerView: GADBannerView!
     @IBOutlet weak var tbvContent: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,15 +37,42 @@ class SettingVC: BaseVC,MFMailComposeViewControllerDelegate {
         self.tbvContent.register(UINib(nibName: SettingCell.getIdentifier(), bundle: nil), forCellReuseIdentifier: SettingCell.getIdentifier())
         self.tbvContent.register(UINib(nibName: SettingConfigCell.getIdentifier(), bundle: nil), forCellReuseIdentifier: SettingConfigCell.getIdentifier())
         self.tbvContent.tableFooterView = UIView()
+        
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        bannerView.adUnitID = kAdmobBanner
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        addBannerViewToView(bannerView)
+    }
+    
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bannerView)
+        view.addConstraints(
+            [NSLayoutConstraint(item: bannerView,
+                                attribute: .bottom,
+                                relatedBy: .equal,
+                                toItem: bottomLayoutGuide,
+                                attribute: .top,
+                                multiplier: 1,
+                                constant: 0),
+             NSLayoutConstraint(item: bannerView,
+                                attribute: .centerX,
+                                relatedBy: .equal,
+                                toItem: view,
+                                attribute: .centerX,
+                                multiplier: 1,
+                                constant: 0)
+            ])
     }
     
     func initData() -> Void {
         let setting1 = SettingObject(name: "Change Passcode", content: "", value: false)
         self.arrSettingData.append(setting1)
         
-        let setting2 = SettingObject(name: "History", content: "", value: true)
-        self.arrSettingData.append(setting2)
-        
+//        let setting2 = SettingObject(name: "History", content: "", value: true)
+//        self.arrSettingData.append(setting2)
+//        
         var contents = ""
         if let filepath = Bundle.main.path(forResource: "policy", ofType: "txt") {
             do {

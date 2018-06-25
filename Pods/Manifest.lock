@@ -15,15 +15,16 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - Alamofire (4.3.0)
+  - BiometricAuthentication (1.0.5)
   - Bolts (1.8.4):
     - Bolts/AppLinks (= 1.8.4)
     - Bolts/Tasks (= 1.8.4)
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
-  - EVReflection (5.4.0):
-    - EVReflection/Core (= 5.4.0)
-  - EVReflection/Core (5.4.0)
+  - EVReflection (5.6.1):
+    - EVReflection/Core (= 5.6.1)
+  - EVReflection/Core (5.6.1)
   - FacebookCore (0.3.0):
     - Bolts (~> 1.8)
     - FBSDKCoreKit (~> 4.27)
@@ -36,6 +37,7 @@ PODS:
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.29.0):
     - FBSDKCoreKit
+  - Google-Mobile-Ads-SDK (7.31.0)
   - SVProgressHUD (2.2.2)
   - TwitterCore (3.1.0)
   - TwitterKit (3.3.0):
@@ -44,25 +46,45 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - Alamofire (~> 4.3.0)
-  - EVReflection
+  - BiometricAuthentication
+  - EVReflection (~> 5.6.1)
   - FacebookCore
   - FacebookLogin
+  - Google-Mobile-Ads-SDK
   - SVProgressHUD
   - TwitterKit
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - Alamofire
+    - BiometricAuthentication
+    - Bolts
+    - EVReflection
+    - FacebookCore
+    - FacebookLogin
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - Google-Mobile-Ads-SDK
+    - SVProgressHUD
+    - TwitterCore
+    - TwitterKit
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
+  BiometricAuthentication: e80e99bf1fe871ab624172eb91f1ddbbc47499b5
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
-  EVReflection: 58296497e901ba9803228055689e835864b3f43f
+  EVReflection: d05ebbafc851b7a4cd3d625182662463a5819ab8
   FacebookCore: 3ffa190a3f1f96cec0e44d3fc221bc322c595ffa
   FacebookLogin: 0af839ea858faef99550d16596b87b4a8e8906e6
   FBSDKCoreKit: 6f139173dc63a1deaff4430a55f2fe5bb222d2af
   FBSDKLoginKit: 56a057ca6822535ea0faa25f57a7c41edb697fd4
+  Google-Mobile-Ads-SDK: 6e529e748b45507a2ca904e0b5a52669ba3920c4
   SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
   TwitterCore: 644d59e75abccb26cf0a9050d2c4dea0e5412241
   TwitterKit: a2e60ddcedbf54091eac6f27685ca7a87681e1d7
 
-PODFILE CHECKSUM: cdd598b3728ebcdb642a7591049fa33e254f9bbf
+PODFILE CHECKSUM: 53ba89f0f657c7d28109e7bfba1d9c2a9591cff7
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.5.2

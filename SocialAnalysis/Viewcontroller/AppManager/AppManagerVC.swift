@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 class AppManagerVC: BaseVC,AppManagerCellDelegate {
     fileprivate var listDataApp = [AppManagerObject]()
     fileprivate var listDataFavorite = [AppManagerObject]()
     @IBOutlet weak var tbvContent: UITableView!
     var segment: UISegmentedControl! = nil
+    var bannerView: GADBannerView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initLayout()
@@ -21,6 +24,27 @@ class AppManagerVC: BaseVC,AppManagerCellDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bannerView)
+        view.addConstraints(
+            [NSLayoutConstraint(item: bannerView,
+                                attribute: .bottom,
+                                relatedBy: .equal,
+                                toItem: bottomLayoutGuide,
+                                attribute: .top,
+                                multiplier: 1,
+                                constant: 0),
+             NSLayoutConstraint(item: bannerView,
+                                attribute: .centerX,
+                                relatedBy: .equal,
+                                toItem: view,
+                                attribute: .centerX,
+                                multiplier: 1,
+                                constant: 0)
+            ])
     }
     
     //MARK: Init
@@ -43,6 +67,12 @@ class AppManagerVC: BaseVC,AppManagerCellDelegate {
         
         let leftBarButton = UIBarButtonItem.init(image: UIImage.init(named: "ic_UnSetting")!, style: .done, target: self, action: #selector(goToSetting))
         self.navigationItem.leftBarButtonItem = leftBarButton
+        
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        bannerView.adUnitID = kAdmobBanner
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        addBannerViewToView(bannerView)
     }
     
     @IBAction func mapTypeChanged(segControl: UISegmentedControl) {
@@ -85,7 +115,7 @@ class AppManagerVC: BaseVC,AppManagerCellDelegate {
         let google = AppManagerObject(name: "Google+", icon: "ic_GooglePlus", color: "dd4739", url: "https://plus.google.com/discover")
         self.listDataApp.append(google)
         
-        let link = AppManagerObject(name: "Linkedln", icon: "ic_LinkedIn", color: "333333", url: "https://vn.linkedin.com/")
+        let link = AppManagerObject(name: "Linkedln", icon: "ic_LinkedIn", color: "#127cb3", url: "https://vn.linkedin.com/")
         self.listDataApp.append(link)
         
         let pinter = AppManagerObject(name: "Pinterest", icon: "ic_Pinterest", color: "cb2028", url: "https://www.pinterest.com/")
@@ -97,42 +127,29 @@ class AppManagerVC: BaseVC,AppManagerCellDelegate {
         let badoo = AppManagerObject(name: "Badoo", icon: "badoon", color: "6f20e0", url: "https://badoo.com/signin")
         self.listDataApp.append(badoo)
         
-        let meetup = AppManagerObject(name: "Meetup", icon: "Meetup", color: "e892a1", url: "https://secure.meetup.com/login/")
+        let meetup = AppManagerObject(name: "Meetup", icon: "Meetup", color: "#e82245", url: "https://secure.meetup.com/login/")
         self.listDataApp.append(meetup)
         
-        let snapchat = AppManagerObject(name: "Snapchat", icon: "snapchat", color: "f4bc9a", url: "https://www.snapchat.com/")
+        let snapchat = AppManagerObject(name: "Snapchat", icon: "snapchat", color: "#fee834", url: "https://accounts.snapchat.com/accounts/login?continue=https%3A%2F%2Faccounts.snapchat.com%2Faccounts%2Fwelcome")
         self.listDataApp.append(snapchat)
         
-        let flickr = AppManagerObject(name: "Flickr", icon: "flickr", color: "000000", url: "https://www.flickr.com/")
+        let flickr = AppManagerObject(name: "Flickr", icon: "flickr", color: "#008000", url: "https://www.flickr.com/signin")
         self.listDataApp.append(flickr)
         
-        let whatsapp = AppManagerObject(name: "Whatsapp", icon: "Whatsapp", color: "ff1494", url: "https://www.whatsapp.com/")
-        self.listDataApp.append(whatsapp)
-        
-        let viber = AppManagerObject(name: "Viber", icon: "viber", color: "00aff0", url: "https://www.viber.com/")
+        let viber = AppManagerObject(name: "Viber", icon: "viber", color: "#6e43a8", url: "https://account.viber.com/en/login")
         self.listDataApp.append(viber)
         
-        let wechat = AppManagerObject(name: "Wechat", icon: "wechat", color: "3b5999", url: "https://www.wechat.com/mobile/en/")
-        self.listDataApp.append(wechat)
-        
-        let yahoo = AppManagerObject(name: "Yahoo", icon: "Yahoo", color: "00acee", url: "https://login.yahoo.com/config/login?.src=fpctx&.intl=vn&.lang=vi-VN&.done=https%3A%2F%2Fvn.yahoo.com")
+        let yahoo = AppManagerObject(name: "Yahoo", icon: "Yahoo", color: "#5419bc", url: "https://login.yahoo.com/config/login?.src=fpctx&.intl=vn&.lang=vi-VN&.done=https%3A%2F%2Fvn.yahoo.com")
         self.listDataApp.append(yahoo)
         
-        let messager = AppManagerObject(name: "Messager", icon: "Messager", color: "517fa3", url: "https://www.messenger.com/")
+        let messager = AppManagerObject(name: "Messager", icon: "Messager", color: "#1788fd", url: "https://www.messenger.com/login/")
         self.listDataApp.append(messager)
         
-        let line = AppManagerObject(name: "Line", icon: "Line", color: "bc0000", url: "https://line.me/en/")
-        self.listDataApp.append(line)
-        
-        let kik = AppManagerObject(name: "Kik", icon: "Kik", color: "ff1494", url: "https://www.kik.com/")
+        let kik = AppManagerObject(name: "Kik", icon: "Kik", color: "#333333", url: "https://kikusernames.com/login")
         self.listDataApp.append(kik)
-        
-        let hangouts = AppManagerObject(name: "Hangouts", icon: "hangouts", color: "cde3fb", url: "https://hangouts.google.com/")
-        self.listDataApp.append(hangouts)
         
         let gmail = AppManagerObject(name: "Gmail", icon: "gmail", color: "d6d6d6", url: "https://mail.google.com/")
         self.listDataApp.append(gmail)
-        
         
         let taggedn = AppManagerObject(name: "Tagged", icon: "taggedn", color: "333333", url: "https://m.tagged.com/login")
         self.listDataApp.append(taggedn)
@@ -143,7 +160,17 @@ class AppManagerVC: BaseVC,AppManagerCellDelegate {
         let okcn = AppManagerObject(name: "Okc", icon: "okcn", color: "2cbda5", url: "https://www.okcupid.com/login")
         self.listDataApp.append(okcn)
         
+        let digg = AppManagerObject(name: "Digg", icon: "Digg", color: "ff1494", url: "http://digg.com/register")
+        self.listDataApp.append(digg)
         
+        let xing = AppManagerObject(name: "Xing", icon: "icons8-xing-96", color: "00aff0", url: "https://login.xing.com/")
+        self.listDataApp.append(xing)
+        
+        let match = AppManagerObject(name: "Match", icon: "match.com_", color: "1574bb", url: "https://www.match.com/login/")
+        self.listDataApp.append(match)
+        
+        let mylife = AppManagerObject(name: "Mylife", icon: "mylife", color: "39aa51", url: "https://www.mylife.com/site/login.pubview")
+        self.listDataApp.append(mylife)
         
         let userDefaults = UserDefaults.standard
         if (userDefaults.object(forKey: "favorite") != nil) {

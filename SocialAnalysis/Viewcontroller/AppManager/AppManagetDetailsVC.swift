@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
-class AppManagetDetailsVC: BaseVC {
-
+class AppManagetDetailsVC: BaseVC,GADInterstitialDelegate {
+    var interstitial: GADInterstitial!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     var accManager:AppManagerObject!
     @IBOutlet weak var webContent: UIWebView!
@@ -18,6 +19,10 @@ class AppManagetDetailsVC: BaseVC {
         self.indicator.startAnimating()
         self.initData()
         self.webContent.delegate = self
+        if accManager.name == "Messager" {
+             UserDefaults.standard.register(defaults: ["UserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36"])
+        }
+       
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,6 +33,17 @@ class AppManagetDetailsVC: BaseVC {
         self.setupBackButton()
         self.setupTitleNavi(title: accManager.name)
         self.webContent.loadRequest(URLRequest.init(url: URL.init(string: accManager.url)!))
+        
+        interstitial = GADInterstitial(adUnitID: kAdmobInterstitial)
+        interstitial.delegate = self
+        let request = GADRequest()
+        interstitial.load(request)
+    }
+    
+    func interstitialDidReceiveAd(_ ad: GADInterstitial) {
+        if interstitial.isReady {
+            interstitial.present(fromRootViewController: self)
+        }
     }
 }
 
@@ -36,3 +52,5 @@ extension AppManagetDetailsVC:UIWebViewDelegate{
         self.indicator.stopAnimating()
     }
 }
+
+

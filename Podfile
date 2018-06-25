@@ -12,6 +12,8 @@ target 'SocialAnalysis' do
     pod 'TwitterKit'
     
     pod 'Alamofire', '~> 4.3.0'
-    pod 'EVReflection'
+    pod 'EVReflection', '~> 5.6.1'
     pod 'SVProgressHUD'
+    pod 'Google-Mobile-Ads-SDK'
+    pod 'BiometricAuthentication'
 end
